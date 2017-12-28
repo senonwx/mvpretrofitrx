@@ -47,6 +47,7 @@ public class LoginActivity extends BaseActivity<LoginContract.View, LoginContrac
                 beginTransaction().
                 replace(R.id.frame_lay, new LoginFragment()).
                 commitAllowingStateLoss();
+
     }
 
     @Override
