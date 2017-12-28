@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.senon.senon12_26", appContext.getPackageName());
+        assertEquals("com.senon.mvpretrofitrx", appContext.getPackageName());
     }
 }
