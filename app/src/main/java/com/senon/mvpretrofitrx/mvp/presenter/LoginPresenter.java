@@ -7,6 +7,7 @@ import com.senon.mvpretrofitrx.mvp.entity.Login;
 import com.senon.mvpretrofitrx.mvp.model.LoginModel;
 import com.senon.mvpretrofitrx.mvp.progress.ObserverResponseListener;
 import com.senon.mvpretrofitrx.mvp.utils.ExceptionHandle;
+import com.senon.mvpretrofitrx.mvp.utils.ToastUtil;
 
 import java.util.HashMap;
 import java.util.List;
@@ -30,13 +31,18 @@ public class LoginPresenter extends LoginContract.Presenter {
         model.login(context, map, isDialog, cancelable, new ObserverResponseListener() {
             @Override
             public void onNext(Object o) {
-                getView().result((BaseResponse< List<Login>>) o);
-                getView().setMsg("请求成功");
+                //这一步是必须的，判断view是否已经被销毁
+                if(getView() != null){
+                    getView().result((BaseResponse< List<Login>>) o);
+                    getView().setMsg("请求成功");
+                }
             }
             @Override
             public void onError(ExceptionHandle.ResponeThrowable e) {
+                if(getView() != null){
                 //// TODO: 2017/12/28 自定义处理异常
-//                ToastUtil.showShortToast(ExceptionHandle.handleException(e).message);
+                ToastUtil.showShortToast(ExceptionHandle.handleException(e).message);
+                }
             }
         });
     }
