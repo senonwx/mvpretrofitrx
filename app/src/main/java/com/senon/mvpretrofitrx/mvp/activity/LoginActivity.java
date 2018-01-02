@@ -4,7 +4,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-
 import com.senon.mvpretrofitrx.R;
 import com.senon.mvpretrofitrx.mvp.base.BaseActivity;
 import com.senon.mvpretrofitrx.mvp.base.BaseResponse;
@@ -13,11 +12,16 @@ import com.senon.mvpretrofitrx.mvp.fragment.LoginFragment;
 import com.senon.mvpretrofitrx.mvp.presenter.LoginPresenter;
 import com.senon.mvpretrofitrx.mvp.entity.Login;
 import com.senon.mvpretrofitrx.mvp.utils.ToastUtil;
+import com.socks.library.KLog;
+import com.trello.rxlifecycle2.android.ActivityEvent;
+import com.trello.rxlifecycle2.android.FragmentEvent;
+
 import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.reactivex.ObservableTransformer;
 
 public class LoginActivity extends BaseActivity<LoginContract.View, LoginContract.Presenter> implements LoginContract.View {
 
@@ -60,15 +64,26 @@ public class LoginActivity extends BaseActivity<LoginContract.View, LoginContrac
         ToastUtil.showShortToast(msg);
     }
 
+    @Override
+    public <T> ObservableTransformer<T, T> bindLifecycle() {
+//        return this.bindUntilEvent(ActivityEvent.PAUSE);//绑定到Activity的pause生命周期（在pause销毁请求）
+        return this.bindToLifecycle();//绑定activity，与activity生命周期一样
+    }
+
+
     @OnClick({R.id.main_msg_tv, R.id.main_check_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.main_msg_tv:
                 break;
             case R.id.main_check_btn:
+                main_msg_tv.setText("");
                 HashMap<String,String> map = new HashMap<>();
                 map.put("type","yuantong");
                 map.put("postid","11111111111");
+//                map.put("mobile","18328008870");
+//                map.put("secret","34ba01d602c88790bbe81a7aca8d3a9f");
+//                KLog.e("mobile:  "+"18328008870"+"  secret:   "+"34ba01d602c88790bbe81a7aca8d3a9f");
                 getPresenter().login(map,true,true);
                 break;
         }

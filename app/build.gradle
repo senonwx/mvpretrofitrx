@@ -17,6 +17,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    //解决库依赖冲突问题
+    configurations.all {
+        resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
+    }
 }
 
 dependencies {
@@ -52,5 +56,11 @@ dependencies {
     compile 'cn.pedant.sweetalert:library:1.3'
     //KLog
     compile 'com.github.zhaokaiqiang.klog:library:1.6.0'
+    //处理rxjava内存泄漏,基础组件
+    compile 'com.trello.rxlifecycle2:rxlifecycle:2.0.1'
+    //如果你想绑定到Android特定的生命周期
+    compile 'com.trello.rxlifecycle2:rxlifecycle-android:2.0.1'
+    //如果你想要预先写好的Activities和Fragments，你可以作为提供者的子类
+    compile 'com.trello.rxlifecycle2:rxlifecycle-components:2.0.1'
 
 }

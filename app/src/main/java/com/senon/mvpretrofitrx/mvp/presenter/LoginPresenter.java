@@ -12,6 +12,8 @@ import com.senon.mvpretrofitrx.mvp.utils.ToastUtil;
 import java.util.HashMap;
 import java.util.List;
 
+import retrofit2.http.GET;
+
 /**
  * 作者：senon on 2017/12/27 10:34
  * 邮箱：a1083911695@163.com
@@ -28,7 +30,7 @@ public class LoginPresenter extends LoginContract.Presenter {
 
     @Override
     public void login(HashMap<String, String> map, boolean isDialog, boolean cancelable) {
-        model.login(context, map, isDialog, cancelable, new ObserverResponseListener() {
+        model.login(context, map, isDialog, cancelable, getView().bindLifecycle(),new ObserverResponseListener() {
             @Override
             public void onNext(Object o) {
                 //这一步是必须的，判断view是否已经被销毁

@@ -4,8 +4,11 @@ import com.senon.mvpretrofitrx.mvp.base.BasePresenter;
 import com.senon.mvpretrofitrx.mvp.base.BaseResponse;
 import com.senon.mvpretrofitrx.mvp.base.BaseView;
 import com.senon.mvpretrofitrx.mvp.entity.Login;
+
 import java.util.HashMap;
 import java.util.List;
+
+import io.reactivex.ObservableTransformer;
 
 /**
  * 作者：senon on 2017/12/27 10:30
@@ -19,11 +22,14 @@ public interface LoginContract {
         void result(BaseResponse<List<Login>> data);
 
         void setMsg(String msg);
+
+        <T> ObservableTransformer<T, T> bindLifecycle();
+
     }
 
     abstract class Presenter extends BasePresenter<View> {
 
-        public abstract void login(HashMap<String,String> map,boolean isDialog,boolean cancelable);
+        public abstract void login(HashMap<String, String> map, boolean isDialog, boolean cancelable);
 
     }
 }

@@ -2,10 +2,10 @@ package com.senon.mvpretrofitrx.mvp.base;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.trello.rxlifecycle2.components.support.RxFragment;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -14,7 +14,7 @@ import butterknife.Unbinder;
  * 邮箱：a1083911695@163.com
  * 父类->基类->动态指定类型->泛型设计（通过泛型指定动态类型->由子类指定，父类只需要规定范围即可）
  */
-public abstract class BaseFragment<V extends BaseView, P extends BasePresenter<V>> extends Fragment {
+public abstract class BaseFragment<V extends BaseView, P extends BasePresenter<V>> extends RxFragment {
 
     //引用V层和P层
     private P presenter;

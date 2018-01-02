@@ -14,6 +14,7 @@ import retrofit2.http.QueryMap;
 public interface ApiService {
 
     @POST("query")
+//    @POST("province-count")
     Observable<BaseResponse<List<Login>>> login(@QueryMap Map<String, String> map);
 
 //    // 登录的请求

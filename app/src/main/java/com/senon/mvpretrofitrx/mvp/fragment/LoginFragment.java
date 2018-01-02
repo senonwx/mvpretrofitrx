@@ -11,12 +11,15 @@ import com.senon.mvpretrofitrx.mvp.contract.LoginContract;
 import com.senon.mvpretrofitrx.mvp.entity.Login;
 import com.senon.mvpretrofitrx.mvp.presenter.LoginPresenter;
 import com.senon.mvpretrofitrx.mvp.utils.ToastUtil;
+import com.trello.rxlifecycle2.android.ActivityEvent;
+import com.trello.rxlifecycle2.android.FragmentEvent;
 
 import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.reactivex.ObservableTransformer;
 
 /**
  * 作者：senon on 2017/12/27 16:36
@@ -58,6 +61,11 @@ public class LoginFragment extends BaseFragment<LoginContract.View, LoginContrac
     @Override
     public void setMsg(String msg) {
         ToastUtil.showShortToast(msg);
+    }
+
+    @Override
+    public <T> ObservableTransformer<T, T> bindLifecycle() {
+        return this.bindUntilEvent(FragmentEvent.PAUSE);
     }
 
     @OnClick({R.id.fragment_msg_tv, R.id.fragment_check_btn})
