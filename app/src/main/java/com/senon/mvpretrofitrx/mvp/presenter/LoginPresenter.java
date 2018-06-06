@@ -49,4 +49,24 @@ public class LoginPresenter extends LoginContract.Presenter {
         });
     }
 
+    @Override
+    public void logout(HashMap<String, String> map, boolean isDialog, boolean cancelable) {
+        model.logout(context, map, isDialog, cancelable, getView().bindLifecycle(),new ObserverResponseListener() {
+            @Override
+            public void onNext(Object o) {
+                //这一步是必须的，判断view是否已经被销毁
+                if(getView() != null){
+                    getView().result((BaseResponse) o);
+                    getView().setMsg("请求成功");
+                }
+            }
+            @Override
+            public void onError(ExceptionHandle.ResponeThrowable e) {
+                if(getView() != null){
+                    ToastUtil.showShortToast(ExceptionHandle.handleException(e).message);
+                }
+            }
+        });
+    }
+
 }

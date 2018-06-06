@@ -17,6 +17,9 @@ public interface ApiService {
 //    @POST("province-count")
     Observable<BaseResponse<List<Login>>> login(@QueryMap Map<String, String> map);
 
+    @POST("query")
+    Observable<BaseResponse<List<Login>>> logout(@QueryMap Map<String, String> map);
+
 //    // 登录的请求
 //    @POST("loginManage/login")
 //    Observable<BaseResponse<Login>> login(@QueryMap Map<String, String> map);

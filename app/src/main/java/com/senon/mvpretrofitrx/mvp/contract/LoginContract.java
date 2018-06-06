@@ -21,6 +21,8 @@ public interface LoginContract {
 
         void result(BaseResponse<List<Login>> data);
 
+        void logoutResult(BaseResponse data);
+
         void setMsg(String msg);
 
         <T> ObservableTransformer<T, T> bindLifecycle();
@@ -29,7 +31,10 @@ public interface LoginContract {
 
     abstract class Presenter extends BasePresenter<View> {
 
+        //请求1
         public abstract void login(HashMap<String, String> map, boolean isDialog, boolean cancelable);
 
+        //请求2
+        public abstract void logout(HashMap<String, String> map, boolean isDialog, boolean cancelable);
     }
 }

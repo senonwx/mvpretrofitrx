@@ -59,6 +59,11 @@ public class LoginFragment extends BaseFragment<LoginContract.View, LoginContrac
     }
 
     @Override
+    public void logoutResult(BaseResponse data) {
+
+    }
+
+    @Override
     public void setMsg(String msg) {
         ToastUtil.showShortToast(msg);
     }

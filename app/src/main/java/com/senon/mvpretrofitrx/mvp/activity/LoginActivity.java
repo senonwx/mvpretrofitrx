@@ -1,5 +1,6 @@
 package com.senon.mvpretrofitrx.mvp.activity;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -29,8 +30,11 @@ public class LoginActivity extends BaseActivity<LoginContract.View, LoginContrac
     TextView main_msg_tv;
     @BindView(R.id.main_check_btn)
     Button main_check_btn;
+    @BindView(R.id.main_check2_btn)
+    Button main_check2_btn;
     @BindView(R.id.frame_lay)
     FrameLayout frame_lay;
+
 
     @Override
     public int getLayoutId() {
@@ -60,6 +64,12 @@ public class LoginActivity extends BaseActivity<LoginContract.View, LoginContrac
     }
 
     @Override
+    public void logoutResult(BaseResponse data) {
+        ////todo 第二个请求结果。。。
+        main_msg_tv.setText(data.getData().toString());
+    }
+
+    @Override
     public void setMsg(String msg) {
         ToastUtil.showShortToast(msg);
     }
@@ -71,7 +81,7 @@ public class LoginActivity extends BaseActivity<LoginContract.View, LoginContrac
     }
 
 
-    @OnClick({R.id.main_msg_tv, R.id.main_check_btn})
+    @OnClick({R.id.main_msg_tv, R.id.main_check_btn,R.id.main_check2_btn,R.id.main_intent_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.main_msg_tv:
@@ -85,6 +95,16 @@ public class LoginActivity extends BaseActivity<LoginContract.View, LoginContrac
 //                map.put("secret","34ba01d602c88790bbe81a7aca8d3a9f");
 //                KLog.e("mobile:  "+"18328008870"+"  secret:   "+"34ba01d602c88790bbe81a7aca8d3a9f");
                 getPresenter().login(map,true,true);
+                break;
+            case R.id.main_check2_btn:
+                main_msg_tv.setText("");
+                HashMap<String,String> map2 = new HashMap<>();
+                map2.put("type","yuantong");
+                map2.put("postid","11111111111");
+                getPresenter().logout(map2,false,true);
+                break;
+            case R.id.main_intent_btn:
+                startActivity(new Intent(LoginActivity.this,NoPresenterActivity.class));
                 break;
         }
     }

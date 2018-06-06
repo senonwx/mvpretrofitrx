@@ -13,34 +13,16 @@
     tools:context="com.senon.mvpretrofitrx.mvp.activity.LoginActivity">
 
     <Button
-        android:text="查询1(有弹窗)"
-        android:id="@+id/main_check_btn"
+        android:text="查询(有弹窗,点击返回不会取消)"
+        android:id="@+id/check_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
-    <Button
-        android:text="查询2(无弹窗)"
-        android:id="@+id/main_check2_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:text="跳转到-->NoPresenterActivity"
-        android:id="@+id/main_intent_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+
     <TextView
-        android:maxLines="5"
-        android:id="@+id/main_msg_tv"
+        android:id="@+id/check_msg_tv"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:text="Hello World!"/>
-
-    <FrameLayout
-        android:background="#e9e5e5"
-        android:layout_marginTop="50dp"
-        android:id="@+id/frame_lay"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
 
 
 </LinearLayout>
