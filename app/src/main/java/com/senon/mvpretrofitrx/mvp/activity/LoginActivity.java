@@ -64,7 +64,7 @@ public class LoginActivity extends BaseActivity<LoginContract.View, LoginContrac
     }
 
     @Override
-    public void logoutResult(BaseResponse data) {
+    public void logoutResult(BaseResponse<List<Login>> data) {
         ////todo 第二个请求结果。。。
         main_msg_tv.setText(data.getData().toString());
     }

@@ -3,6 +3,7 @@ package com.senon.mvpretrofitrx.mvp.activity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
 import com.senon.mvpretrofitrx.R;
 import com.senon.mvpretrofitrx.mvp.base.BaseActivity;
 import com.senon.mvpretrofitrx.mvp.base.BasePresenter;
@@ -13,8 +14,10 @@ import com.senon.mvpretrofitrx.mvp.model.LoginModel;
 import com.senon.mvpretrofitrx.mvp.progress.ObserverResponseListener;
 import com.senon.mvpretrofitrx.mvp.utils.ExceptionHandle;
 import com.senon.mvpretrofitrx.mvp.utils.ToastUtil;
+
 import java.util.HashMap;
 import java.util.List;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 

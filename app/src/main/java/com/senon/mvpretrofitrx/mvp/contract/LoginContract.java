@@ -21,7 +21,7 @@ public interface LoginContract {
 
         void result(BaseResponse<List<Login>> data);
 
-        void logoutResult(BaseResponse data);
+        void logoutResult(BaseResponse<List<Login>> data);
 
         void setMsg(String msg);
 
