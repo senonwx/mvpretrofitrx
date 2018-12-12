@@ -70,6 +70,11 @@ public class LoginActivity extends BaseActivity<LoginContract.View, LoginContrac
     }
 
     @Override
+    public void getChaptersResult(BaseResponse<List<Login>> data) {
+        main_msg_tv.setText(data.getData().toString());
+    }
+
+    @Override
     public void setMsg(String msg) {
         ToastUtil.showShortToast(msg);
     }
@@ -88,20 +93,21 @@ public class LoginActivity extends BaseActivity<LoginContract.View, LoginContrac
                 break;
             case R.id.main_check_btn:
                 main_msg_tv.setText("");
-                HashMap<String,String> map = new HashMap<>();
-                map.put("type","yuantong");
-                map.put("postid","11111111111");
-//                map.put("mobile","18328008870");
-//                map.put("secret","34ba01d602c88790bbe81a7aca8d3a9f");
-//                KLog.e("mobile:  "+"18328008870"+"  secret:   "+"34ba01d602c88790bbe81a7aca8d3a9f");
-                getPresenter().login(map,true,true);
+//                HashMap<String,String> map = new HashMap<>();
+//                map.put("type","yuantong");
+//                map.put("postid","11111111111");
+//                getPresenter().login(map,true,true);
+
+                getPresenter().getChapters(true,true);
                 break;
             case R.id.main_check2_btn:
                 main_msg_tv.setText("");
-                HashMap<String,String> map2 = new HashMap<>();
-                map2.put("type","yuantong");
-                map2.put("postid","11111111111");
-                getPresenter().logout(map2,false,true);
+//                HashMap<String,String> map2 = new HashMap<>();
+//                map2.put("type","yuantong");
+//                map2.put("postid","11111111111");
+//                getPresenter().login(map2,false,true);
+
+                getPresenter().getChapters(false,true);
                 break;
             case R.id.main_intent_btn:
                 startActivity(new Intent(LoginActivity.this,NoPresenterActivity.class));

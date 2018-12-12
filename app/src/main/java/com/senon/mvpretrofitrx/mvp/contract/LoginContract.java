@@ -23,6 +23,8 @@ public interface LoginContract {
 
         void logoutResult(BaseResponse<List<Login>> data);
 
+        void getChaptersResult(BaseResponse<List<Login>> data);
+
         void setMsg(String msg);
 
         <T> ObservableTransformer<T, T> bindLifecycle();
@@ -36,5 +38,8 @@ public interface LoginContract {
 
         //请求2
         public abstract void logout(HashMap<String, String> map, boolean isDialog, boolean cancelable);
+
+        //请求3
+        public abstract void getChapters(boolean isDialog, boolean cancelable);
     }
 }

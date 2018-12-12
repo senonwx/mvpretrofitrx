@@ -29,4 +29,10 @@ public class LoginModel<T> extends BaseModel {
 
         subscribe(context, Api.getApiService().logout(map), observerListener,transformer,isDialog,cancelable);
     }
+
+    public void getChapters(Context context, boolean isDialog, boolean cancelable,
+                      ObservableTransformer<T,T> transformer, ObserverResponseListener observerListener){
+
+        subscribe(context, Api.getApiService().getChapters(), observerListener,transformer,isDialog,cancelable);
+    }
 }

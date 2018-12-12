@@ -5,6 +5,7 @@ import com.senon.mvpretrofitrx.mvp.entity.Login;
 import java.util.List;
 import java.util.Map;
 import io.reactivex.Observable;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.QueryMap;
 
@@ -30,4 +31,6 @@ public interface ApiService {
 //    Observable<BaseResponse<List<UploadFile>>> upload(@Part List<MultipartBody.Part> parts);
 
 
+    @GET("wxarticle/chapters/json")
+    Observable<BaseResponse> getChapters();
 }
