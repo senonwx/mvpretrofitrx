@@ -59,6 +59,11 @@ public class LoginFragment extends BaseFragment<LoginContract.View, LoginContrac
     }
 
     @Override
+    public void getChaptersResult(BaseResponse<List<Login>> data) {
+        fragment_msg_tv.setText(data.getData().toString());
+    }
+
+    @Override
     public void logoutResult(BaseResponse data) {
 
     }
@@ -80,10 +85,12 @@ public class LoginFragment extends BaseFragment<LoginContract.View, LoginContrac
                 break;
             case R.id.fragment_check_btn:
                 fragment_msg_tv.setText("");
-                HashMap<String,String> map = new HashMap<>();
-                map.put("type","yuantong");
-                map.put("postid","11111111111");
-                getPresenter().login(map,false,false);
+//                HashMap<String,String> map = new HashMap<>();
+//                map.put("type","yuantong");
+//                map.put("postid","11111111111");
+//                getPresenter().login(map,false,false);
+
+                getPresenter().getChapters(false,false);
                 break;
         }
     }

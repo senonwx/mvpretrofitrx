@@ -1,5 +1,7 @@
 package com.senon.mvpretrofitrx.mvp.entity;
 
+import java.util.List;
+
 /**
  * 作者：senon on 2017/12/27 10:31
  * 邮箱：a1083911695@163.com
@@ -7,57 +9,90 @@ package com.senon.mvpretrofitrx.mvp.entity;
 
 public class Login {
 
+
     /**
-     * time : 2017-12-18 17:17:58
-     * ftime : 2017-12-18 17:17:58
-     * context : 感恩广场生活区9区2号圆通快递妈妈驿站已发出自提短信,请上门自提,如有疑问请联系15340979298
-     * location : null
+     * children : []
+     * courseId : 13
+     * id : 408
+     * name : 鸿洋
+     * order : 190000
+     * parentChapterId : 407
+     * userControlSetTop : false
+     * visible : 1
      */
 
-    private String time;
-    private String ftime;
-    private String context;
-    private Object location;
+    private int courseId;
+    private int id;
+    private String name;
+    private int order;
+    private int parentChapterId;
+    private boolean userControlSetTop;
+    private int visible;
+    private List<?> children;
 
-    public String getTime() {
-        return time;
+    public int getCourseId() {
+        return courseId;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
     }
 
-    public String getFtime() {
-        return ftime;
+    public int getId() {
+        return id;
     }
 
-    public void setFtime(String ftime) {
-        this.ftime = ftime;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getContext() {
-        return context;
+    public String getName() {
+        return name;
     }
 
-    public void setContext(String context) {
-        this.context = context;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Object getLocation() {
-        return location;
+    public int getOrder() {
+        return order;
     }
 
-    public void setLocation(Object location) {
-        this.location = location;
+    public void setOrder(int order) {
+        this.order = order;
     }
 
-    @Override
-    public String toString() {
-        return "Login{" +
-                "time='" + time + '\n' +
-                ", ftime='" + ftime + '\n' +
-                ", context='" + context + '\n' +
-                ", location=" + location +
-                '}';
+    public int getParentChapterId() {
+        return parentChapterId;
     }
+
+    public void setParentChapterId(int parentChapterId) {
+        this.parentChapterId = parentChapterId;
+    }
+
+    public boolean isUserControlSetTop() {
+        return userControlSetTop;
+    }
+
+    public void setUserControlSetTop(boolean userControlSetTop) {
+        this.userControlSetTop = userControlSetTop;
+    }
+
+    public int getVisible() {
+        return visible;
+    }
+
+    public void setVisible(int visible) {
+        this.visible = visible;
+    }
+
+    public List<?> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<?> children) {
+        this.children = children;
+    }
+
+
 }

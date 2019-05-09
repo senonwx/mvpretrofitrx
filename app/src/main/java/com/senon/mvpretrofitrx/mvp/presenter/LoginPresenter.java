@@ -69,4 +69,29 @@ public class LoginPresenter extends LoginContract.Presenter {
         });
     }
 
+    @Override
+    public void getChapters(boolean isDialog, boolean cancelable) {
+        model.getChapters(context,isDialog, cancelable, getView().bindLifecycle(),new ObserverResponseListener() {
+            @Override
+            public void onNext(Object o) {
+                //这一步是必须的，判断view是否已经被销毁
+                if(getView() != null){
+                    BaseResponse<List<Login>> response = (BaseResponse<List<Login>>) o;
+                    if(response.getCode() == 0){
+                        getView().getChaptersResult(response);
+                        getView().setMsg("请求成功");
+                    }else {
+                        getView().setMsg("请求失败,errorCode: "+response.getCode());
+                    }
+                }
+            }
+            @Override
+            public void onError(ExceptionHandle.ResponeThrowable e) {
+                if(getView() != null){
+                    ToastUtil.showShortToast(ExceptionHandle.handleException(e).message);
+                }
+            }
+        });
+    }
+
 }

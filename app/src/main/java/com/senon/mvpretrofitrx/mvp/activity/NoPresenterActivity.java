@@ -58,24 +58,31 @@ public class NoPresenterActivity extends BaseActivity {
                 break;
             case R.id.check_btn:
                 check_msg_tv.setText("");
-                HashMap<String, String> map = new HashMap<>();
-                map.put("type", "yuantong");
-                map.put("postid", "11111111111");
-                getData(map, true, false);
+//                HashMap<String, String> map = new HashMap<>();
+//                map.put("type", "yuantong");
+//                map.put("postid", "11111111111");
+//                getData(map, true, false);
+
+                getData(true, false);
                 break;
         }
     }
 
-    private void getData(HashMap<String, String> map, boolean isDialog, boolean cancelable) {
-        model.login(this, map, isDialog, cancelable,
+    private void getData(boolean isDialog, boolean cancelable) {
+        model.getChapters(this,isDialog, cancelable,
                 this.bindToLifecycle(), new ObserverResponseListener() {
                     @Override
                     public void onNext(Object o) {
                         //这一步是必须的，判断view是否已经被销毁
                         if (this != null) {
                             //设置数据。。。
-                            BaseResponse<List<Login>> data = (BaseResponse<List<Login>>) o;
-                            setData(data);
+                            BaseResponse<List<Login>> response = (BaseResponse<List<Login>>) o;
+                            if(response.getCode() == 0){
+                                //请求成功
+                                setData(response);
+                            }else {
+                                //"请求失败,errorCode: "+response.getCode()
+                            }
                         }
                     }
 

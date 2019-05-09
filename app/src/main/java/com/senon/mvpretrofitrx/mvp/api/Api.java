@@ -8,9 +8,9 @@ import com.senon.mvpretrofitrx.mvp.base.BaseApi;
 
 public class Api {
 
-    private String baseUrl = "http://www.kuaidi100.com/";
-//    private String baseUrl = "http://hbhz.sesdf.org/api/";
-//    http://www.kuaidi100.com/query?type=快递公司代号&postid=快递单号
+//    private String baseUrl = "http://www.kuaidi100.com/";
+    private String baseUrl = "http://www.wanandroid.com/";
+
 
     private volatile static ApiService apiService;
 

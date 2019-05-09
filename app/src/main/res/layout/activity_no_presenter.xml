@@ -13,7 +13,7 @@
     tools:context="com.senon.mvpretrofitrx.mvp.activity.LoginActivity">
 
     <Button
-        android:text="查询(有弹窗,点击返回不会取消)"
+        android:text="查询(有弹窗,点击BACK键不会取消请求)"
         android:id="@+id/check_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
