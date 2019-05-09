@@ -9,7 +9,7 @@ import butterknife.ButterKnife;
  * 邮箱：a1083911695@163.com
  * 父类->基类->动态指定类型->泛型设计（通过泛型指定动态类型->由子类指定，父类只需要规定范围即可）
  */
-public abstract class BaseActivity<V extends BaseView,P extends BasePresenter<V>> extends RxAppCompatActivity {
+public abstract class BaseActivity<V extends BaseView,P extends BasePresenter<V>> extends RxAppCompatActivity{
 
     //引用V层和P层
     private P presenter;

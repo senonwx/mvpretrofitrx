@@ -66,6 +66,7 @@ public class BaseApi {
             public Response intercept(Chain chain) throws IOException {
                 Request build = chain.request().newBuilder()
                         .addHeader("Content-Type", "application/json")//设置允许请求json数据
+//                        .addHeader("","")//自定义 配置header信息
                         .build();
                 return chain.proceed(build);
             }

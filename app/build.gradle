@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.senon.mvpretrofitrx"
         minSdkVersion 17
@@ -10,6 +9,12 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+            }
+        }
     }
     buildTypes {
         release {
@@ -53,7 +58,7 @@ dependencies {
     //design依赖
     compile 'com.android.support:design:25.0.0'
     //dialog
-    compile 'cn.pedant.sweetalert:library:1.3'
+    compile 'com.github.f0ris.sweetalert:library:1.5.1'
     //KLog
     compile 'com.github.zhaokaiqiang.klog:library:1.6.0'
     //处理rxjava内存泄漏,基础组件

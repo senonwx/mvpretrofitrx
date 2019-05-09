@@ -16,10 +16,8 @@ import com.senon.mvpretrofitrx.mvp.utils.ToastUtil;
 import com.socks.library.KLog;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 import com.trello.rxlifecycle2.android.FragmentEvent;
-
 import java.util.HashMap;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 import io.reactivex.ObservableTransformer;
