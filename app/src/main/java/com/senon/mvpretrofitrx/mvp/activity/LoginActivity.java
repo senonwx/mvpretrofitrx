@@ -9,6 +9,7 @@ import com.senon.mvpretrofitrx.R;
 import com.senon.mvpretrofitrx.mvp.base.BaseActivity;
 import com.senon.mvpretrofitrx.mvp.base.BaseResponse;
 import com.senon.mvpretrofitrx.mvp.contract.LoginContract;
+import com.senon.mvpretrofitrx.mvp.entity.Banner;
 import com.senon.mvpretrofitrx.mvp.fragment.LoginFragment;
 import com.senon.mvpretrofitrx.mvp.presenter.LoginPresenter;
 import com.senon.mvpretrofitrx.mvp.entity.Login;
@@ -73,6 +74,11 @@ public class LoginActivity extends BaseActivity<LoginContract.View, LoginContrac
     }
 
     @Override
+    public void getBannerResult(BaseResponse<List<Banner>> data) {
+        main_msg_tv.setText(data.getData().toString());
+    }
+
+    @Override
     public void setMsg(String msg) {
         ToastUtil.showShortToast(msg);
     }
@@ -84,7 +90,7 @@ public class LoginActivity extends BaseActivity<LoginContract.View, LoginContrac
     }
 
 
-    @OnClick({R.id.main_msg_tv, R.id.main_check_btn,R.id.main_check2_btn,R.id.main_intent_btn})
+    @OnClick({R.id.main_msg_tv, R.id.main_check_btn,R.id.main_check2_btn,R.id.main_intent_btn,R.id.main_check3_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.main_msg_tv:
@@ -106,6 +112,11 @@ public class LoginActivity extends BaseActivity<LoginContract.View, LoginContrac
 //                getPresenter().login(map2,false,true);
 
                 getPresenter().getChapters(false,true);
+                break;
+            case R.id.main_check3_btn:
+                //合并请求结果
+                main_msg_tv.setText("");
+                getPresenter().getBanner(true,true);
                 break;
             case R.id.main_intent_btn:
                 startActivity(new Intent(LoginActivity.this,NoPresenterActivity.class));

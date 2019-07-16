@@ -3,6 +3,7 @@ package com.senon.mvpretrofitrx.mvp.presenter;
 import android.content.Context;
 import com.senon.mvpretrofitrx.mvp.base.BaseResponse;
 import com.senon.mvpretrofitrx.mvp.contract.LoginContract;
+import com.senon.mvpretrofitrx.mvp.entity.Banner;
 import com.senon.mvpretrofitrx.mvp.entity.Login;
 import com.senon.mvpretrofitrx.mvp.model.LoginModel;
 import com.senon.mvpretrofitrx.mvp.progress.ObserverResponseListener;
@@ -88,6 +89,27 @@ public class LoginPresenter extends LoginContract.Presenter {
             @Override
             public void onError(ExceptionHandle.ResponeThrowable e) {
                 if(getView() != null){
+                    ToastUtil.showShortToast(ExceptionHandle.handleException(e).message);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void getBanner(boolean isDialog, boolean cancelable) {
+        model.zipRequest(context,isDialog, cancelable, getView().bindLifecycle(),new ObserverResponseListener() {
+            @Override
+            public void onNext(Object o) {
+                //这一步是必须的，判断view是否已经被销毁
+                if(getView() != null){
+                    getView().getBannerResult((BaseResponse<List<Banner>>) o);
+                    getView().setMsg("合并请求成功");
+                }
+            }
+            @Override
+            public void onError(ExceptionHandle.ResponeThrowable e) {
+                if(getView() != null){
+                    //// TODO: 2017/12/28 自定义处理异常
                     ToastUtil.showShortToast(ExceptionHandle.handleException(e).message);
                 }
             }

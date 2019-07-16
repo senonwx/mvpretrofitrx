@@ -69,7 +69,7 @@ public class NoPresenterActivity extends BaseActivity {
     }
 
     private void getData(boolean isDialog, boolean cancelable) {
-        model.getChapters(this,isDialog, cancelable,
+        model.getDelayChapters(this,isDialog, cancelable,
                 this.bindToLifecycle(), new ObserverResponseListener() {
                     @Override
                     public void onNext(Object o) {

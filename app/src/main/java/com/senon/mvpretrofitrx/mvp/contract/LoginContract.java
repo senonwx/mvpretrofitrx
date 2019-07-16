@@ -3,6 +3,7 @@ package com.senon.mvpretrofitrx.mvp.contract;
 import com.senon.mvpretrofitrx.mvp.base.BasePresenter;
 import com.senon.mvpretrofitrx.mvp.base.BaseResponse;
 import com.senon.mvpretrofitrx.mvp.base.BaseView;
+import com.senon.mvpretrofitrx.mvp.entity.Banner;
 import com.senon.mvpretrofitrx.mvp.entity.Login;
 
 import java.util.HashMap;
@@ -25,6 +26,8 @@ public interface LoginContract {
 
         void getChaptersResult(BaseResponse<List<Login>> data);
 
+        void getBannerResult(BaseResponse<List<Banner>> data);
+
         void setMsg(String msg);
 
         <T> ObservableTransformer<T, T> bindLifecycle();
@@ -41,5 +44,8 @@ public interface LoginContract {
 
         //请求3
         public abstract void getChapters(boolean isDialog, boolean cancelable);
+
+        //请求4
+        public abstract void getBanner(boolean isDialog, boolean cancelable);
     }
 }

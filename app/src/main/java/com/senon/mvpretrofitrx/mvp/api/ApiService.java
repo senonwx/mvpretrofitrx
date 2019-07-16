@@ -33,4 +33,7 @@ public interface ApiService {
 
     @GET("wxarticle/chapters/json")
     Observable<BaseResponse> getChapters();
+
+    @GET("banner/json")
+    Observable<BaseResponse> getBanner();
 }

@@ -8,6 +8,7 @@ import com.senon.mvpretrofitrx.R;
 import com.senon.mvpretrofitrx.mvp.base.BaseFragment;
 import com.senon.mvpretrofitrx.mvp.base.BaseResponse;
 import com.senon.mvpretrofitrx.mvp.contract.LoginContract;
+import com.senon.mvpretrofitrx.mvp.entity.Banner;
 import com.senon.mvpretrofitrx.mvp.entity.Login;
 import com.senon.mvpretrofitrx.mvp.presenter.LoginPresenter;
 import com.senon.mvpretrofitrx.mvp.utils.ToastUtil;
@@ -61,6 +62,11 @@ public class LoginFragment extends BaseFragment<LoginContract.View, LoginContrac
     @Override
     public void getChaptersResult(BaseResponse<List<Login>> data) {
         fragment_msg_tv.setText(data.getData().toString());
+    }
+
+    @Override
+    public void getBannerResult(BaseResponse<List<Banner>> data) {
+
     }
 
     @Override

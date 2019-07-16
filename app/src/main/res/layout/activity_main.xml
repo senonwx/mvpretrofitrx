@@ -23,6 +23,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <Button
+        android:text="合并查询3(zip)"
+        android:id="@+id/main_check3_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
         android:text="跳转到-->NoPresenterActivity"
         android:id="@+id/main_intent_btn"
         android:layout_width="wrap_content"

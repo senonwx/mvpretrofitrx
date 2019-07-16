@@ -5,6 +5,7 @@ import com.senon.mvpretrofitrx.mvp.api.Api;
 import com.senon.mvpretrofitrx.mvp.base.BaseModel;
 import com.senon.mvpretrofitrx.mvp.progress.ObserverResponseListener;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 import io.reactivex.ObservableTransformer;
 
@@ -35,4 +36,33 @@ public class LoginModel<T> extends BaseModel {
 
         subscribe(context, Api.getApiService().getChapters(), observerListener,transformer,isDialog,cancelable);
     }
+
+    /**
+     * 模拟网络延迟   延迟 3 秒请求
+     * @param context
+     * @param isDialog
+     * @param cancelable
+     * @param transformer
+     * @param observerListener
+     */
+    public void getDelayChapters(Context context, boolean isDialog, boolean cancelable,
+                                 ObservableTransformer<T,T> transformer, ObserverResponseListener observerListener){
+
+        subscribe(context, Api.getApiService().getChapters().delay(3, TimeUnit.SECONDS), observerListener,transformer,isDialog,cancelable);
+    }
+
+    /**
+     * 合并请求结果
+     * @param context
+     * @param isDialog
+     * @param cancelable
+     * @param transformer
+     * @param observerListener
+     */
+    public void zipRequest(Context context,boolean isDialog, boolean cancelable,
+                           ObservableTransformer<T,T> transformer, ObserverResponseListener observerListener){
+        subscribe(context, Api.getApiService().getChapters(),Api.getApiService().getBanner(),
+                observerListener,transformer,isDialog,cancelable);
+    }
+
 }
